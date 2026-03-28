@@ -9,6 +9,9 @@ public class PlayerMovement : MonoBehaviour
     Vector3 currentPosition;
     float verticalSpeed;
     float horizontalSpeed;
+    Vector3 horizontalVector;
+    Vector3 verticalVector;
+    Vector3 movementVector;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,19 +22,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        verticalSpeed = Input.GetAxisRaw("Vertical") * speed;
-        horizontalSpeed = Input.GetAxisRaw("Horizontal") * speed;
+        verticalSpeed = Input.GetAxisRaw("Vertical");
+        horizontalSpeed = Input.GetAxisRaw("Horizontal");
 
-        if (verticalSpeed > 0)
-        {
-            Debug.Log("YEEEEEY");
-        }
+        movementVector = new Vector3(horizontalSpeed, 0, verticalSpeed);
+        // normalizamos el vector para que no se vaya de verga al ir diagonalmente
+        currentPosition += movementVector.normalized * speed * Time.deltaTime;
 
-        if (horizontalSpeed > 0)
-        {
-            Debug.Log("YEEEEEY HHHH");
-        }
-        //currentPosition += verticalSpeed;
-        //currentPosition += horizontalSpeed;
+        tr.position = currentPosition;
+
+        Debug.Log(currentPosition);
     }
 }
