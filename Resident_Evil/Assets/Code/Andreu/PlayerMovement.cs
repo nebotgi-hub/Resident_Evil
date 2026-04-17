@@ -9,9 +9,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 currentPosition;
     float verticalSpeed;
     float horizontalSpeed;
-    Vector3 horizontalVector;
-    Vector3 verticalVector;
     Vector3 movementVector;
+    Vector3 directorVector;
+    Vector3 targetPosition;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +26,11 @@ public class PlayerMovement : MonoBehaviour
         verticalSpeed = Input.GetAxisRaw("Vertical");
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
 
-        movementVector = new Vector3(horizontalSpeed, 0, verticalSpeed);
-        // normalizamos el vector para que no se vaya de verga al ir diagonalmente
-        currentPosition += movementVector.normalized * speed * Time.deltaTime;
+        // rotation del personsaje
+        tr.Rotate(0, horizontalSpeed, 0);
+
+        // normalizamos el vector director y aplicamos la velocidad de speed
+        currentPosition += tr.forward.normalized * verticalSpeed * Time.deltaTime;
 
         tr.position = currentPosition;
 
