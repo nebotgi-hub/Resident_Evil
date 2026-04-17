@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float speedVelocity;
+    public float rotationVelocity;
     Transform tr;
     Vector3 currentPosition;
     float verticalSpeed;
@@ -26,13 +27,18 @@ public class PlayerMovement : MonoBehaviour
         verticalSpeed = Input.GetAxisRaw("Vertical");
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
 
-        // rotation del personsaje
-        tr.Rotate(0, horizontalSpeed, 0);
+        // rotation del personsaje si no esta tirando hacia delante
+        if (horizontalSpeed != 0)
+        {
+            tr.Rotate(0, horizontalSpeed * rotationVelocity, 0);
+        } else
+        {
+            // normalizamos el vector director y aplicamos la velocidad de speed
+            currentPosition += tr.forward.normalized * (verticalSpeed * speedVelocity) * Time.deltaTime;
 
-        // normalizamos el vector director y aplicamos la velocidad de speed
-        currentPosition += tr.forward.normalized * verticalSpeed * Time.deltaTime;
+            tr.position = currentPosition;
 
-        tr.position = currentPosition;
+        }
 
         Debug.Log(currentPosition);
     }
