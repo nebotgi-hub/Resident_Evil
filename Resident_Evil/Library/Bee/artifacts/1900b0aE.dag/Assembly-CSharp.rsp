@@ -360,6 +360,7 @@
 -analyzer:"C:/Program Files/Unity 2022.3.8f1/Editor/Data/Tools/Unity.SourceGenerators/Unity.SourceGenerators.dll"
 "Assets/Code/Andreu/CameraActive.cs"
 "Assets/Code/Andreu/PlayerMovement.cs"
+"Assets/Code/Carlos/Interactable.cs"
 -langversion:9.0
 
 /deterministic

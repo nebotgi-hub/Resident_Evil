@@ -19,7 +19,11 @@ MonoBehaviour:
     width: 1280
     height: 941
   m_ShowMode: 4
+<<<<<<< Updated upstream
   m_Title: Game
+=======
+  m_Title: Scene
+>>>>>>> Stashed changes
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +125,11 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
+<<<<<<< Updated upstream
   controlID: 131
+=======
+  controlID: 5905
+>>>>>>> Stashed changes
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +154,11 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
+<<<<<<< Updated upstream
   controlID: 25
+=======
+  controlID: 5906
+>>>>>>> Stashed changes
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -719,9 +731,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 17.556164, y: -38.26191, z: 26.158983}
+    m_Target: {x: 33.14975, y: -79.76124, z: -84.64098}
     speed: 2
-    m_Value: {x: 17.556164, y: -38.26191, z: 26.158983}
+    m_Value: {x: 33.14975, y: -79.76124, z: -84.64098}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -767,13 +779,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.42400426, y: -0.26181272, z: 0.1294963, w: -0.85729015}
+    m_Target: {x: 0.05902139, y: 0.9207323, z: -0.35383698, w: 0.15359546}
     speed: 2
-    m_Value: {x: -0.42399555, y: -0.26180735, z: 0.12949365, w: -0.85727257}
+    m_Value: {x: 0.059020694, y: 0.9207215, z: -0.3538328, w: 0.15359364}
   m_Size:
-    m_Target: 31.590881
+    m_Target: 65.57565
     speed: 2
-    m_Value: 31.590881
+    m_Value: 65.57565
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1607,9 +1619,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
       m_SelectedIDs: 02670000
       m_LastClickedID: 26370
       m_ExpandedIDs: 92f9ffffbe660000
+=======
+      m_SelectedIDs: f4650000
+      m_LastClickedID: 26100
+      m_ExpandedIDs: 92ccffff66f3ffff30fbffff36650000b0650000f4650000
+>>>>>>> Stashed changes
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1625,7 +1643,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 9}
+        m_ClientGUIView: {fileID: 7}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -1678,7 +1696,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Code/Andreu
+    - Assets/Code/Carlos
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1686,16 +1704,22 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Code/Andreu
+  - Assets/Code/Carlos
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\sanchezcas\Documents\GitHub\Resident_Evil\Resident_Evil
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< Updated upstream
     m_SelectedIDs: 86680000
     m_LastClickedID: 26758
     m_ExpandedIDs: 00000000382a00003067000000ca9a3bffffff7f
+=======
+    m_SelectedIDs: 88670000
+    m_LastClickedID: 26504
+    m_ExpandedIDs: 00000000266600005e67000062670000946700009867000000ca9a3bffffff7f
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1723,7 +1747,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< Updated upstream
     m_ExpandedIDs: 0000000030670000
+=======
+    m_ExpandedIDs: 000000002666000000ca9a3bffffff7f
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1751,21 +1779,25 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
+<<<<<<< Updated upstream
     m_ExpandedInstanceIDs: 
+=======
+    m_ExpandedInstanceIDs: 00000000ae670000
+>>>>>>> Stashed changes
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Interactable
+      m_OriginalName: Interactable
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 27182
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:

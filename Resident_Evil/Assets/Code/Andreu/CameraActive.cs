@@ -11,17 +11,17 @@ public class CameraActive : MonoBehaviour
 
     private void Update()
     {
-        if (cam.activeSelf)
-        {
-            cam.transform.LookAt(player_tr, Vector3.up);
-        }
+        // if (cam.activeSelf)
+        // {
+        //     cam.transform.LookAt(player_tr, Vector3.up);
+        // }
     }
 
     private void OnTriggerEnter(Collider other)
     {   
         if (other.CompareTag("Player"))
         {
-            player_tr = other.transform;
+            // player_tr = other.transform;
             cam.SetActive(true);
         }
 

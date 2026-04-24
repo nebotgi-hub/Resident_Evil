@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 100}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 3687
+  controlID: 4931
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -149,7 +149,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 3688
+  controlID: 4932
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -520,9 +520,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 17.556164, y: -38.26191, z: 26.158983}
+    m_Target: {x: 87.51267, y: -33.801033, z: 46.755276}
     speed: 2
-    m_Value: {x: 17.556164, y: -38.26191, z: 26.158983}
+    m_Value: {x: 87.51267, y: -33.801033, z: 46.755276}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -568,13 +568,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: -0.42400426, y: -0.26181272, z: 0.1294963, w: -0.85729015}
+    m_Target: {x: 0.1443882, y: 0.51679987, z: -0.08892647, w: 0.8391501}
     speed: 2
-    m_Value: {x: -0.42399555, y: -0.26180735, z: 0.12949365, w: -0.85727257}
+    m_Value: {x: 0.14438742, y: 0.51679707, z: -0.088925995, w: 0.83914554}
   m_Size:
-    m_Target: 31.590881
+    m_Target: 54.576694
     speed: 2
-    m_Value: 31.590881
+    m_Value: 54.576694
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1460,9 +1460,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 
-      m_LastClickedID: 0
-      m_ExpandedIDs: 30fbffffa8650000ee650000
+      m_SelectedIDs: f4650000
+      m_LastClickedID: 26100
+      m_ExpandedIDs: 92ccffff66f3ffff30fbffffb0650000f4650000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1557,7 +1557,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Code/Andreu
+    - Assets/Source/Player/Jill Valentine/source
     m_Globs: []
     m_OriginalText: 
     m_ImportLogFlags: 0
@@ -1565,16 +1565,16 @@ MonoBehaviour:
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Code/Andreu
+  - Assets/Source/Player/Jill Valentine/source
   m_LastFoldersGridSize: 16
   m_LastProjectPath: C:\Users\nebotgi\Documents\GitHub\Resident_Evil\Resident_Evil
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 80670000
-    m_LastClickedID: 26496
-    m_ExpandedIDs: 00000000206600005867000000ca9a3bffffff7f
+    m_SelectedIDs: 9c670000
+    m_LastClickedID: 26524
+    m_ExpandedIDs: 000000002666000062670000946700009867000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1602,7 +1602,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002066000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000002666000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1627,24 +1627,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 
-    m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: 
+    m_SelectedInstanceIDs: f4650000
+    m_LastClickedInstanceID: 26100
+    m_HadKeyboardFocusLastEvent: 0
+    m_ExpandedInstanceIDs: 00000000ae670000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: CameraActive
-      m_OriginalName: CameraActive
+      m_Name: 
+      m_OriginalName: 
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 6068
+      m_UserData: 0
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 0
+      m_OriginalEventType: 11
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 10}
     m_CreateAssetUtility:
