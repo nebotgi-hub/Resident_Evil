@@ -4,9 +4,24 @@ using UnityEngine;
 
 public class CameraActive : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject cam;
+
+    CameraActive curr_ca;
+
     private void OnTriggerEnter(Collider other)
+    {   
+        if (other.CompareTag("Player"))
+        {
+            cam.SetActive(true);
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            cam.SetActive(false);
+        }
     }
 }
