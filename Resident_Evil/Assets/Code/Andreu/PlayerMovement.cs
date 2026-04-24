@@ -39,7 +39,5 @@ public class PlayerMovement : MonoBehaviour
             tr.position = currentPosition;
 
         }
-
-        Debug.Log(currentPosition);
     }
 }
