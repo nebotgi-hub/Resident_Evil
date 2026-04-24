@@ -7,22 +7,22 @@ public class PlayerMovement : MonoBehaviour
     public float speedVelocity;
     public float rotationVelocity;
     Transform tr;
-    Vector3 currentPosition;
     float verticalSpeed;
     float horizontalSpeed;
     Vector3 movementVector;
     Vector3 directorVector;
     Vector3 targetPosition;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>(); 
-        currentPosition = tr.position;
+        rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void FixedUpdate()
     {
         verticalSpeed = Input.GetAxisRaw("Vertical");
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
@@ -31,13 +31,11 @@ public class PlayerMovement : MonoBehaviour
         if (horizontalSpeed != 0)
         {
             tr.Rotate(0, horizontalSpeed * rotationVelocity, 0);
-        } else
+        }
+        else
         {
-            // normalizamos el vector director y aplicamos la velocidad de speed
-            currentPosition += tr.forward.normalized * (verticalSpeed * speedVelocity) * Time.deltaTime;
-
-            tr.position = currentPosition;
-
+            rb.velocity = tr.forward * verticalSpeed * speedVelocity * Time.deltaTime;
+            rb.angularVelocity = new Vector3(0, 0, 0);
         }
     }
 }
