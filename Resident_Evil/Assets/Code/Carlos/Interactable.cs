@@ -6,7 +6,7 @@ public class Interactable : MonoBehaviour
 {
      public bool InRange = false;
 
-    void OnCollisionEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         Debug.Log("Algo ha entrado en el trigger: " + other.name);
 
@@ -16,7 +16,7 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    void OnCollisionExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
         {

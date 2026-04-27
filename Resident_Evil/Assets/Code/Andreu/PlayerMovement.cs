@@ -14,11 +14,14 @@ public class PlayerMovement : MonoBehaviour
     Vector3 targetPosition;
     Rigidbody rb;
 
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>(); 
         rb = GetComponent<Rigidbody>();
+
     }
 
 
@@ -26,6 +29,19 @@ public class PlayerMovement : MonoBehaviour
     {
         verticalSpeed = Input.GetAxisRaw("Vertical");
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
+
+        if (verticalSpeed > 0 || horizontalSpeed != 0)
+        {
+            anim.SetInteger("state", 1);
+        }
+        else if (verticalSpeed < 0)
+        {
+            anim.SetInteger("state", 2);
+        }
+        else
+        {
+            anim.SetInteger("state", 0);
+        }
 
         // rotation del personsaje si no esta tirando hacia delante
         if (horizontalSpeed != 0)
