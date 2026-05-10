@@ -5,7 +5,6 @@ using UnityEngine;
 public class CameraActive : MonoBehaviour
 {
     public GameObject cam;
-    Transform player_tr;
 
     CameraActive curr_ca;
 

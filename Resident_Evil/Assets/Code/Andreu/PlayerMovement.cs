@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 directorVector;
     Vector3 targetPosition;
     Rigidbody rb;
+    float currentSpeed;
 
     public Animator anim;
 
@@ -43,6 +44,13 @@ public class PlayerMovement : MonoBehaviour
             anim.SetInteger("state", 0);
         }
 
+        // Velocidad de sprint
+        currentSpeed = speedVelocity;
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            currentSpeed = speedVelocity * 3.0f;
+        }
+
         // rotation del personsaje si no esta tirando hacia delante
         if (horizontalSpeed != 0)
         {
@@ -50,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.velocity = tr.forward * verticalSpeed * speedVelocity * Time.deltaTime;
+            rb.velocity = tr.forward * verticalSpeed * currentSpeed * Time.deltaTime;
             rb.angularVelocity = new Vector3(0, 0, 0);
         }
     }
