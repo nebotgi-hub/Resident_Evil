@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         currentSpeed = speedVelocity;
         if (Input.GetKey(KeyCode.LeftShift))
         {
-            currentSpeed = speedVelocity * 3.0f;
+            currentSpeed = speedVelocity * 1.75f;
         }
 
         // rotation del personsaje si no esta tirando hacia delante
