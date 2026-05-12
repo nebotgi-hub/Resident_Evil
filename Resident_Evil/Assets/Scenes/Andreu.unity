@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641228, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028316, g: 0.22571361, b: 0.30692178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,7 +295,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: edf86981301e8fb4893570674a3450f3, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -368,7 +368,7 @@ MonoBehaviour:
   InRange: 0
   playerCamera: {fileID: 1581127214}
   testCamera: {fileID: 171831801}
-  trPlayer: {fileID: 0}
+  isInCutscene: 0
 --- !u!65 &190177634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
   InRange: 0
   playerCamera: {fileID: 1009414568}
   testCamera: {fileID: 171831801}
-  trPlayer: {fileID: 0}
+  isInCutscene: 0
 --- !u!65 &695175528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1768,7 +1768,7 @@ MonoBehaviour:
   InRange: 0
   playerCamera: {fileID: 1581127214}
   testCamera: {fileID: 171831801}
-  trPlayer: {fileID: 0}
+  isInCutscene: 0
 --- !u!65 &1657533598
 BoxCollider:
   m_ObjectHideFlags: 0
