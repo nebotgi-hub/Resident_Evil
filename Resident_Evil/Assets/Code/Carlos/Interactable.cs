@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
     // tema camaras
     public Camera playerCamera;
     public Camera testCamera;
+    public Animator doorAnimator;
 
     public bool isInCutscene = false;
 
@@ -32,18 +33,14 @@ public class Interactable : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Interact") && InRange)
+        if (Input.GetButtonDown("Interact") && InRange && !isInCutscene)
         {
             // añadimos aqui que dependiendo que tag tenga la puerta, si o si debe cambiarse a camera test
             // validación de si poseemos el objeto que abre la llave
             StartCoroutine(TestCameraRoutine());
         }
 
-        // debug cameras activas
-        foreach (Camera cam in Camera.allCameras)
-        {
-            //Debug.Log(cam.name + " ACTIVE: " + cam.gameObject.activeInHierarchy + " ENABLED: " + cam.enabled);
-        }
+        
     }
 
     IEnumerator TestCameraRoutine()
@@ -56,7 +53,9 @@ public class Interactable : MonoBehaviour
 
         Debug.Log("PUERTA BLOQUEADA → CAMARA TEST");
 
-        yield return new WaitForSeconds(5.0f);
+        // activar animacion
+        doorAnimator.Play("doorAnimation", 0, 0f);
+        yield return new WaitForSeconds(4.0f);
 
         // despus de los 5 seg, volvemos siempre a la camara main, esta mal, debe devolver a la que toca
         testCamera.gameObject.SetActive(false);
