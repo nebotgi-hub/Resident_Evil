@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028376, g: 0.2257144, b: 0.3069226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028316, g: 0.22571361, b: 0.30692178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -239,6 +239,7 @@ GameObject:
   - component: {fileID: 171831802}
   - component: {fileID: 171831801}
   - component: {fileID: 171831800}
+  - component: {fileID: 171831803}
   m_Layer: 0
   m_Name: DoorAnimationCamera
   m_TagString: AnimationDoor
@@ -314,12 +315,33 @@ Transform:
   m_GameObject: {fileID: 171831799}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 11.68, y: 47.714886, z: -47.66}
+  m_LocalPosition: {x: 24.890001, y: 47.71489, z: -48.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 884606995}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!95 &171831803
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171831799}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aec2e27b09e9c1c41ba7580223e5109c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &190177631
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +352,7 @@ GameObject:
   m_Component:
   - component: {fileID: 190177632}
   - component: {fileID: 190177634}
-  - component: {fileID: 190177633}
+  - component: {fileID: 190177635}
   m_Layer: 0
   m_Name: collider
   m_TagString: Untagged
@@ -353,23 +375,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1785726788}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &190177633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190177631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e321e3331dd586d4bb806ff1acdab8a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InRange: 0
-  playerCamera: {fileID: 1581127214}
-  testCamera: {fileID: 171831801}
-  doorAnimator: {fileID: 1244053724}
-  isInCutscene: 0
 --- !u!65 &190177634
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -391,6 +396,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8113089, y: 1, z: 1.0940732}
   m_Center: {x: -0.90565383, y: 0, z: 0.007970247}
+--- !u!114 &190177635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190177631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cbf58544c1e1343a56055edf0dbf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InRange: 0
+  playerCamera: {fileID: 1581127214}
+  animCamera: {fileID: 171831801}
+  doorAnimator: {fileID: 1657533597}
+  isInCutscene: 0
+  isLocked: 0
 --- !u!1 &273372193
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,7 +766,7 @@ GameObject:
   m_Component:
   - component: {fileID: 695175526}
   - component: {fileID: 695175528}
-  - component: {fileID: 695175527}
+  - component: {fileID: 695175529}
   m_Layer: 0
   m_Name: collider
   m_TagString: Untagged
@@ -766,23 +789,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1098211085}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &695175527
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 695175525}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e321e3331dd586d4bb806ff1acdab8a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InRange: 0
-  playerCamera: {fileID: 1009414568}
-  testCamera: {fileID: 171831801}
-  doorAnimator: {fileID: 1244053724}
-  isInCutscene: 0
 --- !u!65 &695175528
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -804,6 +810,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.8113089, y: 1, z: 1.0940732}
   m_Center: {x: -0.90565383, y: 0, z: 0.007970247}
+--- !u!114 &695175529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695175525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cbf58544c1e1343a56055edf0dbf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InRange: 0
+  playerCamera: {fileID: 1009414568}
+  animCamera: {fileID: 171831801}
+  doorAnimator: {fileID: 1657533597}
+  isInCutscene: 0
+  isLocked: 0
 --- !u!1 &884606994
 GameObject:
   m_ObjectHideFlags: 0
@@ -1308,78 +1332,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1098211084}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1244053723
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1244053725}
-  - component: {fileID: 1244053724}
-  - component: {fileID: 1244053726}
-  m_Layer: 0
-  m_Name: DoorPivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &1244053724
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244053723}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d540ee16079b8f54c86f79afac7a2dfc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
---- !u!4 &1244053725
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244053723}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 42.5, y: 6.176858, z: -31.08}
-  m_LocalScale: {x: 1.19056, y: 19.585867, z: 10.780972}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1875746679}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1244053726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244053723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e321e3331dd586d4bb806ff1acdab8a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InRange: 0
-  playerCamera: {fileID: 1581127214}
-  testCamera: {fileID: 171831801}
-  doorAnimator: {fileID: 1244053724}
-  isInCutscene: 0
 --- !u!1 &1370054816
 GameObject:
   m_ObjectHideFlags: 0
@@ -1802,8 +1754,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1657533596}
+  - component: {fileID: 1657533597}
+  - component: {fileID: 1657533598}
   m_Layer: 0
-  m_Name: collider
+  m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1817,13 +1771,53 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1657533595}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 1, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 43.619125, y: 7.92, z: -27.480309}
+  m_LocalScale: {x: 0.119056, y: 3.9171731, z: 2.1561944}
   m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1875746679}
+  m_Children:
+  - {fileID: 1875746679}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1657533597
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657533595}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0037ae62bafe80a4988828dc380313eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1657533598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657533595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8cbf58544c1e1343a56055edf0dbf6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InRange: 0
+  playerCamera: {fileID: 1581127214}
+  animCamera: {fileID: 171831801}
+  doorAnimator: {fileID: 1657533597}
+  isInCutscene: 0
+  isLocked: 1
 --- !u!1001 &1663056596
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2272,8 +2266,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 43.8, y: 5.38, z: -24.653679}
-  m_LocalScale: {x: 5, y: 5, z: 6}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 2, y: 2, z: 2.4}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
@@ -2409,13 +2403,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1875746678}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.088999994, z: 0.43900007}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.53}
+  m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 1657533596}
-  m_Father: {fileID: 1244053725}
+  m_Children: []
+  m_Father: {fileID: 1657533596}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1875746680
 BoxCollider:
@@ -2842,4 +2835,4 @@ SceneRoots:
   - {fileID: 2112693587}
   - {fileID: 1822451334}
   - {fileID: 1831844417}
-  - {fileID: 1244053725}
+  - {fileID: 1657533596}

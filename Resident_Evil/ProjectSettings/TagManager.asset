@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - AnimationDoor
+  - Door1
+  - Door2
   layers:
   - Default
   - TransparentFX
