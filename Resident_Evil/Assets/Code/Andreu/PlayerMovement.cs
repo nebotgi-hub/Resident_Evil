@@ -17,6 +17,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Animator anim;
 
+    private bool isMoving;
+    private bool isSprinting;
+    private bool isMoonwalking;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,28 +29,40 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-
-    private void FixedUpdate()
+    void Update()
     {
         verticalSpeed = Input.GetAxisRaw("Vertical");
         horizontalSpeed = Input.GetAxisRaw("Horizontal");
 
-        if (verticalSpeed > 0 || horizontalSpeed != 0)
+        isMoonwalking = verticalSpeed < 0;
+        isMoving = verticalSpeed > 0 || horizontalSpeed != 0;
+        isSprinting = Input.GetKey(KeyCode.LeftShift) && isMoving && !isMoonwalking;
+
+
+        if (isSprinting && !isMoonwalking)
         {
-            anim.SetInteger("state", 1);
+            anim.SetInteger("state", 3);
         }
-        else if (verticalSpeed < 0)
+        else if (isMoonwalking)
         {
             anim.SetInteger("state", 2);
+        }
+        else if ((isMoving || horizontalSpeed != 0) && !isSprinting)
+        {
+            anim.SetInteger("state", 1);
         }
         else
         {
             anim.SetInteger("state", 0);
         }
+    }
 
+
+    private void FixedUpdate()
+    {
         // Velocidad de sprint
         currentSpeed = speedVelocity;
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (isSprinting && !isMoonwalking)
         {
             currentSpeed = speedVelocity * 1.75f;
         }

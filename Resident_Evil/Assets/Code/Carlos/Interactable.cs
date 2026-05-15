@@ -39,8 +39,6 @@ public class Interactable : MonoBehaviour
             // validación de si poseemos el objeto que abre la llave
             StartCoroutine(TestCameraRoutine());
         }
-
-        
     }
 
     IEnumerator TestCameraRoutine()
