@@ -10,6 +10,21 @@ public class UIIventory : MonoBehaviour
     public GameObject buttonPrefab;
     public TMP_Text descriptionText;
 
+    // referencia a la transformacion del selector
+    public RectTransform selectionFrame;
+
+    private List<GameObject> spawnedButtons = new List<GameObject>();
+    public List<RectTransform> slots;
+
+    // seccion de la imagen grande y el nombre del item
+    public Image itemImageBig;
+    public TMP_Text itemNameText;
+
+    public void Start()
+    {
+        itemImageBig.enabled = false;
+    }
+
     public void Refresh(List<ObjectModular> items)
     {
         foreach (Transform child in contentPanel)
@@ -17,11 +32,24 @@ public class UIIventory : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        // cleaneamos los botones spawneados para que vaya a inicio
+        spawnedButtons.Clear();
+
         for (int i = 0; i < items.Count; i++)
         {
             int index = i;
 
+            // creamos boton dentro de canvas
             GameObject btn = Instantiate(buttonPrefab, contentPanel);
+
+            // añadimos el boton dentro
+            spawnedButtons.Add(btn);
+
+            // necesito llamar al inventoryButton para sacar y asignar icono que será el que se verá en el inventario
+            InventoryButton ib = btn.GetComponent<InventoryButton>();
+
+            ib.text.text = items[i].objectName;
+            ib.iconImage.sprite = items[i].Icon;
 
             var tmp = btn.GetComponentInChildren<TextMeshProUGUI>(true);
 
@@ -53,5 +81,29 @@ public class UIIventory : MonoBehaviour
     public void ShowDescription(string desc)
     {
         descriptionText.text = desc;
+    }
+
+    public void ShowItem(ObjectModular item)
+    {
+        itemImageBig.enabled = true;
+
+        itemImageBig.sprite = item.Icon;
+
+        itemImageBig.sprite = item.Icon;
+        itemNameText.text = item.objectName;
+    }
+
+    // mover el selector
+    public void MoveSelector(int index)
+    {
+        if (slots == null || slots.Count == 0)
+            return;
+
+        if (index < 0 || index >= slots.Count)
+            return;
+
+        selectionFrame.gameObject.SetActive(true);
+
+        selectionFrame.position = slots[index].position;
     }
 }

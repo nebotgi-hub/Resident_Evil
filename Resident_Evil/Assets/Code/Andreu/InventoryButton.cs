@@ -8,4 +8,5 @@ public class InventoryButton : MonoBehaviour
 {
     public TextMeshProUGUI text;
     public Button button;
+    public Image iconImage;
 }
