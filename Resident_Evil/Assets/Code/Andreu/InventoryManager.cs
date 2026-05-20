@@ -16,6 +16,10 @@ public class InventoryManager : MonoBehaviour
     // inicializacion del indice
     private int selectedIndex = 0;
 
+    public PlayerMovement player;
+
+    private int actionIndex = 0;
+
     // esto se ejecuta antes del start, sirve para cargar el inventario antes que el propio objeto como tal
     private void Awake()
     {
@@ -38,6 +42,7 @@ public class InventoryManager : MonoBehaviour
     {
         if (items.Count == 0) return;
 
+        // movimiento
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             MoveRight();
@@ -45,6 +50,25 @@ public class InventoryManager : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             MoveLeft();
+        }
+
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            actionIndex = 0;
+            // añadimos el indice de acción para decidir que hacer con el item
+            uiInventory.HighlightAction(actionIndex);
+        }
+
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            actionIndex = 1;
+            uiInventory.HighlightAction(actionIndex);
+        }
+
+        // usabilidad de los items
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            ExecuteAction();
         }
     }
 
@@ -86,4 +110,70 @@ public class InventoryManager : MonoBehaviour
         uiInventory.MoveSelector(index);
     }
 
+    void ExecuteAction()
+    {
+        if (items.Count == 0) return;
+
+        ObjectModular item = items[selectedIndex];
+
+        // recordar, 0 usar, 1 descartar, esto con enum estaria de locos
+        if (actionIndex == 0)
+        {
+            UseItem(item);
+        }
+        else if (actionIndex == 1)
+        {
+            // solo borrar los items consumibles
+            if (item.isConsumable)
+            {
+                items.RemoveAt(selectedIndex);
+                uiInventory.Refresh(items);
+                SelectItem(0);
+            }
+            
+        }
+    }
+
+    void UseItem(ObjectModular item)
+    {
+        if (item.itemType == ObjectModular.ItemType.Heal)
+        {
+            player.HealLife(3);
+
+            if (item.isConsumable)
+            {
+                items.RemoveAt(selectedIndex);
+                uiInventory.Refresh(items);
+
+                ClampSelectionAfterRemove();
+            }
+        }
+        else if (item.itemType == ObjectModular.ItemType.Key)
+        {
+            // checkeo de llave
+            Debug.Log("Llave");
+        }
+        else
+        {
+            // por si habian mas tipos de objetos
+            Debug.Log("No se puede usar");
+        }
+    }
+
+    // esto fixea el indice de seleccion
+    void ClampSelectionAfterRemove()
+    {
+        if (items.Count == 0)
+        {
+            selectedIndex = 0;
+            return;
+        }
+
+        selectedIndex = Mathf.Clamp(selectedIndex, 0, items.Count - 1);
+
+        // buscamos otro objecto para el marco, realmente un slot
+        uiInventory.MoveSelector(selectedIndex);
+        uiInventory.ShowItem(items[selectedIndex]);
+        uiInventory.ShowDescription(items[selectedIndex].description);
+    }
 }

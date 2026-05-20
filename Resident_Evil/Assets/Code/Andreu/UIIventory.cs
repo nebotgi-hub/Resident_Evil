@@ -20,6 +20,10 @@ public class UIIventory : MonoBehaviour
     public Image itemImageBig;
     public TMP_Text itemNameText;
 
+    // seccion de usar o descartar, los dos botones del inventario que dan utilidad
+    public Image useImage;
+    public Image discardImage;
+
     public void Start()
     {
         itemImageBig.enabled = false;
@@ -76,6 +80,20 @@ public class UIIventory : MonoBehaviour
                 InventoryManager.instance.SelectItem(index);
             });
         }
+    }
+
+    // de momento nada
+    public void Update()
+    {
+        
+    }
+
+    public void HighlightAction(int index)
+    {
+        Debug.Log("HighlightAction llamado: " + index);
+
+        useImage.color = (index == 0) ? Color.red : Color.black;
+        discardImage.color = (index == 1) ? Color.red : Color.black;
     }
 
     public void ShowDescription(string desc)

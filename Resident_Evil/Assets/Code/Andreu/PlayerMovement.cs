@@ -91,5 +91,10 @@ public class PlayerMovement : MonoBehaviour
     public void HealLife(int amountOfLife)
     {
         lifes += amountOfLife;
+
+        if (lifes > 3)
+        {
+            lifes = 3;
+        }
     }
 }

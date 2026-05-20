@@ -20,4 +20,5 @@ public class ObjectModular : ScriptableObject
     public string description;
     public Sprite Icon;
     public ItemType itemType;
+    public bool isConsumable;
 }
