@@ -14,7 +14,6 @@ public class UIIventory : MonoBehaviour
     {
         foreach (Transform child in contentPanel)
         {
-            // destrozamos objeto para iniciarlo otra vez
             Destroy(child.gameObject);
         }
 
@@ -23,10 +22,28 @@ public class UIIventory : MonoBehaviour
             int index = i;
 
             GameObject btn = Instantiate(buttonPrefab, contentPanel);
-            btn.GetComponentInChildren<TMP_Text>().text = items[i].objectName;
 
-            // evento on click, para seleccionar los items del inventario
-            btn.GetComponent<Button>().onClick.AddListener(() =>
+            var tmp = btn.GetComponentInChildren<TextMeshProUGUI>(true);
+
+            // checkeo que exista el TMP este si o si, y sino palante
+            if (tmp == null)
+            {
+                Debug.LogError("NO EXISTE TMP");
+                continue;
+            }
+
+            tmp.text = items[index].objectName;
+
+            var button = btn.GetComponent<Button>();
+
+            // igual con el botón del prefab
+            if (button == null)
+            {
+                Debug.LogError("BOTONN NULO");
+                continue;
+            }
+
+            button.onClick.AddListener(() =>
             {
                 InventoryManager.instance.SelectItem(index);
             });

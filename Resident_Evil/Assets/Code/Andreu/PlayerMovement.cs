@@ -21,12 +21,14 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting;
     private bool isMoonwalking;
 
+    private int lifes;
+
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>(); 
         rb = GetComponent<Rigidbody>();
-
+        lifes = 3;
     }
 
     void Update()
@@ -37,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         isMoonwalking = verticalSpeed < 0;
         isMoving = verticalSpeed > 0 || horizontalSpeed != 0;
         isSprinting = Input.GetKey(KeyCode.LeftShift) && isMoving && !isMoonwalking;
+
+        // Debug.Log(lifes);
 
 
         if (isSprinting && !isMoonwalking)
@@ -77,5 +81,15 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = tr.forward * verticalSpeed * currentSpeed * Time.deltaTime;
             rb.angularVelocity = new Vector3(0, 0, 0);
         }
+    }
+
+    public void RestLifes()
+    {
+        lifes -= 1;
+    }
+
+    public void HealLife(int amountOfLife)
+    {
+        lifes += amountOfLife;
     }
 }

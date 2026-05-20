@@ -29,20 +29,23 @@ public class EnemyFollow : MonoBehaviour
             Vector3 toPlayer = player.position - rb.position;
             float distance = toPlayer.magnitude;
 
-            // necesitaba bloquear la persecución, sino me mueve al personsaje tambien cuando lo toca, y causa problemas
-            if (distance > stopDistance)
+            Vector3 dir = toPlayer.normalized;
+
+            // esto lo hacemos para que no se tuerza para adelante, bloqueando el eje de la Y
+            Vector3 dirFixed = new Vector3(dir.x, 0.0f, dir.z);
+
+            if (dirFixed != Vector3.zero)
             {
-                Vector3 dir = toPlayer.normalized;
-
-                // esto lo hacemos para que no se tuerza para adelante, bloqueando el eje de la Y
-                Vector3 dirFixed = new Vector3(dir.x, 0.0f, dir.z);
-
                 // de cara al jugador, al usar rigidbody, tenemos que girar sin el LookAt del transform, movida pero asi workea
                 Quaternion rot = Quaternion.LookRotation(dirFixed);
                 rb.MoveRotation(rot);
+            }
 
+            // necesitaba bloquear la persecución, sino me mueve al personsaje tambien cuando lo toca, y causa problemas
+            if (distance > stopDistance)
+            {
                 // hacia la posi del player, recordar que usamos el fixedDeltaTime porque estamos en FixedUpdate, usamos fisicas
-                rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + dirFixed * speed * Time.fixedDeltaTime);
             }
         } else
         {
@@ -60,7 +63,7 @@ public class EnemyFollow : MonoBehaviour
                 rb.MoveRotation(rot);
 
                 // vuelta a la posi inicial del bichillo
-                rb.MovePosition(rb.position + dirBack * speed * Time.fixedDeltaTime);
+                rb.MovePosition(rb.position + dirFixed * speed * Time.fixedDeltaTime);
             }
         }
     }
