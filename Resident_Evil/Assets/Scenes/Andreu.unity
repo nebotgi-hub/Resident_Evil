@@ -187,7 +187,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnSpray
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3537,7 +3537,7 @@ GameObject:
   m_Layer: 0
   m_Name: SpawnKey
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -3886,6 +3886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   stopDistance: 1.5
+  anim: {fileID: 0}
 --- !u!54 &1603395278
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5004,6 +5005,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.2
   stopDistance: 1.5
+  anim: {fileID: 0}
 --- !u!135 &1966197699
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -8,9 +8,10 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance { get; private set; }
 
     [Header("Audio Sources")]
-    [SerializeField] private AudioSource sfxSource;
-    [SerializeField] private AudioSource sfxSource2;
-    [SerializeField] private AudioSource musicSource;
+    public AudioSource sfxSource;
+    public AudioSource sfxSource2;
+    public AudioSource sfxSource3;
+    public AudioSource musicSource;
 
     [Header("Sonidos registrados")]
     [SerializeField] private SoundEntry[] sounds;
@@ -45,6 +46,7 @@ public class SoundManager : MonoBehaviour
     }
 
     public void StopMusic() => musicSource.Stop();
+    public void StopSFX() => sfxSource.Stop();
 
     public void FadeIn(string soundName, float duration = 1f, bool loop = true)
     {
@@ -87,17 +89,31 @@ public class SoundManager : MonoBehaviour
     public void PlaySFX(string soundName, int sfxChannel = 1)
     {
         if (!TryGetClip(soundName, out var clip)) return;
-
-        AudioSource source = sfxChannel == 2 ? sfxSource2 : sfxSource;
+        AudioSource source = sfxChannel == 3 ? sfxSource3 : sfxChannel == 2 ? sfxSource2 : sfxSource;
         source.clip = clip;
         source.Play();
     }
 
+    public void PauseAll()
+    {
+        sfxSource.Pause();
+        sfxSource2.Pause();
+        sfxSource3.Pause();
+        musicSource.Pause();
+    }
+
+    public void ResumeAll()
+    {
+        sfxSource.UnPause();
+        sfxSource2.UnPause();
+        sfxSource3.UnPause();
+        musicSource.UnPause();
+    }
 
     public bool IsPlayingSFX(string soundName, int sfxChannel = 1)
     {
         if (!TryGetClip(soundName, out var clip)) return false;
-        AudioSource source = sfxChannel == 2 ? sfxSource2 : sfxSource;
+        AudioSource source = sfxChannel == 3 ? sfxSource3 : sfxChannel == 2 ? sfxSource2 : sfxSource;
         return source.isPlaying && source.clip == clip;
     }
 }

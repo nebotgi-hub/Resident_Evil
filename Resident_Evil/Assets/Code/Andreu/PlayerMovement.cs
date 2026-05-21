@@ -22,8 +22,10 @@ public class PlayerMovement : MonoBehaviour
     private bool isMoonwalking;
 
     public int lifes;
+    public bool died = false;
 
     public Transform checkPoint;
+    public GameObject Cam;
 
     // Start is called before the first frame update
     void Start()
@@ -43,41 +45,43 @@ public class PlayerMovement : MonoBehaviour
         isSprinting = Input.GetKey(KeyCode.LeftShift) && isMoving && !isMoonwalking;
 
         // Debug.Log(lifes);
-
-        if (isMoving)
+        if (Time.timeScale > 0f && !Cam.activeSelf)
         {
-
-            if (isSprinting)
+            if (isMoving)
             {
-                if (!SoundManager.Instance.IsPlayingSFX("Running"))
+
+                if (isSprinting)
                 {
-                    SoundManager.Instance.PlaySFX("Running");
-                }
+                    if (!SoundManager.Instance.IsPlayingSFX("Running"))
+                    {
+                        SoundManager.Instance.PlaySFX("Running");
+                    }
 
-                anim.SetInteger("state", 3);
+                    anim.SetInteger("state", 3);
+                }
+                else
+                {
+                    if(!SoundManager.Instance.IsPlayingSFX("Walking"))
+                    {
+                        SoundManager.Instance.PlaySFX("Walking");
+                    }
+
+                    anim.SetInteger("state", 1);
+                }
             }
-            else
+            else if (isMoonwalking)
             {
-                if(!SoundManager.Instance.IsPlayingSFX("Walking"))
+                if (!SoundManager.Instance.IsPlayingSFX("Walking"))
                 {
                     SoundManager.Instance.PlaySFX("Walking");
                 }
 
-                anim.SetInteger("state", 1);
+                anim.SetInteger("state", 2);
             }
-        }
-        else if (isMoonwalking)
-        {
-            if (!SoundManager.Instance.IsPlayingSFX("Walking"))
+            else
             {
-                SoundManager.Instance.PlaySFX("Walking");
+                anim.SetInteger("state", 0);
             }
-
-            anim.SetInteger("state", 2);
-        }
-        else
-        {
-            anim.SetInteger("state", 0);
         }
     }
 
@@ -107,9 +111,13 @@ public class PlayerMovement : MonoBehaviour
     {
         lifes -= 1;
 
+        SoundManager.Instance.StopSFX();
+        SoundManager.Instance.PlaySFX("Hurts",3);
+
         if (lifes <= 0)
         {
             // seteamos position del player
+            died = true;
             this.transform.position = checkPoint.position;
             InventoryManager.instance.LoadInventory();
             lifes = 3;

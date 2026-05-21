@@ -15,16 +15,30 @@ public class Inter_Door : Interactable
     {
         if (isLocked)
         {
-            //SoundManager.Instance.PlaySFX("Locked",2);
-            DialogueManager.Instance.StartDialogue(new string[] {
+            ObjectModular key = InventoryManager.instance.items.Find(item => item.itemType == ObjectModular.ItemType.Key);
+
+            if (key != null)
+            {
+                // tiene llave: abre la puerta y consume la llave
+                isLocked = false;
+                InventoryManager.instance.items.Remove(key);
+                InventoryManager.instance.uiInventory.Refresh(InventoryManager.instance.items);
+
+            }
+            else
+            {
+                // no tiene llave
+                SoundManager.Instance.PlaySFX("Locked", 2);
+                DialogueManager.Instance.StartDialogue(new string[] {
                 "This door is locked; I'll need a key."
             });
+            }
         }
         else
         {
             if (!InCutscene)
             {
-                //SoundManager.Instance.PlaySFX("DoorsAnim",2);
+                SoundManager.Instance.PlaySFX("DoorsAnim", 2);
                 StartCoroutine(CameraRoutine());
             }
         }

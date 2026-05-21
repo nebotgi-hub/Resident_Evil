@@ -18,6 +18,7 @@ public class EnemyDamage : MonoBehaviour
             {
                 player.RestLifes();
                 StartCoroutine(DamageCooldown());
+
             }
         }
     }
