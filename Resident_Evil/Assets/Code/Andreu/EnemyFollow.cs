@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
@@ -11,12 +12,32 @@ public class EnemyFollow : MonoBehaviour
     private bool isFollowing = false;
     Rigidbody rb;
     public float stopDistance;
+
+    public Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         initialPosition = tr.position;
+    }
+
+    private void Update()
+    {
+        if (isFollowing)
+        {
+            if (!SoundManager.Instance.IsPlayingSFX("Tsteps",2))
+            {
+                SoundManager.Instance.PlaySFX("Tsteps",2);
+            }
+
+            anim.SetInteger("state", 1);
+        }
+        else
+        {
+            anim.SetInteger("state", 0);
+        }
     }
 
     // Update is called once per frame
@@ -77,12 +98,12 @@ public class EnemyFollow : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isFollowing = false;
-            player = null;
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        isFollowing = false;
+    //        player = null;
+    //    }
+    //}
 }
