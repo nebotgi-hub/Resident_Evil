@@ -15,7 +15,7 @@ public class Inter_Door : Interactable
     {
         if (isLocked)
         {
-            SoundManager.Instance.PlaySFX("Locked",2);
+            //SoundManager.Instance.PlaySFX("Locked",2);
             DialogueManager.Instance.StartDialogue(new string[] {
                 "This door is locked; I'll need a key."
             });
@@ -24,7 +24,7 @@ public class Inter_Door : Interactable
         {
             if (!InCutscene)
             {
-                SoundManager.Instance.PlaySFX("DoorsAnim",2);
+                //SoundManager.Instance.PlaySFX("DoorsAnim",2);
                 StartCoroutine(CameraRoutine());
             }
         }
@@ -32,13 +32,16 @@ public class Inter_Door : Interactable
 
     IEnumerator CameraRoutine()
     {
-        Transform player = GameObject.FindWithTag("Player").transform;
+        GameObject player = GameObject.FindWithTag("Player");
         doorAnimator.SetTrigger("PlayDoor");
         animCamera.gameObject.SetActive(true);
         InCutscene = true;
+        InventoryManager.instance.SaveInventory();
         yield return new WaitForSeconds(4f);
         InCutscene = false;
-        player.position = NextPosition.position;
+        player.transform.position = NextPosition.position;
+
+        player.GetComponent<PlayerMovement>().SetCheckPoint(NextPosition);
         animCamera.gameObject.SetActive(false);
     }
 }

@@ -18,3 +18,5 @@ MonoBehaviour:
 '
   Icon: {fileID: 21300000, guid: 907c2fd451d8c0f4aa8cdc58dfe38edd, type: 3}
   itemType: 0
+  isConsumable: 0
+  itemID: key_01

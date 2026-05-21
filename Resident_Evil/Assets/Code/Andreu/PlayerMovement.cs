@@ -21,7 +21,9 @@ public class PlayerMovement : MonoBehaviour
     private bool isSprinting;
     private bool isMoonwalking;
 
-    private int lifes;
+    public int lifes;
+
+    public Transform checkPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -104,6 +106,14 @@ public class PlayerMovement : MonoBehaviour
     public void RestLifes()
     {
         lifes -= 1;
+
+        if (lifes <= 0)
+        {
+            // seteamos position del player
+            this.transform.position = checkPoint.position;
+            InventoryManager.instance.LoadInventory();
+            lifes = 3;
+        }
     }
 
     public void HealLife(int amountOfLife)
@@ -114,5 +124,10 @@ public class PlayerMovement : MonoBehaviour
         {
             lifes = 3;
         }
+    }
+
+    public void SetCheckPoint(Transform position)
+    {
+        checkPoint = position;
     }
 }

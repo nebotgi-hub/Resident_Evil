@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,13 @@ public class InventoryManager : MonoBehaviour
     public PlayerMovement player;
 
     private int actionIndex = 0;
+
+    // Array de objeto para loadear
+    public List<ObjectModular> itemsToSave = new List<ObjectModular>();
+
+
+    // puntos del mapa donde estan los objetos
+    public List<ItemSpawnPoint> worldSpawns;
 
     // esto se ejecuta antes del start, sirve para cargar el inventario antes que el propio objeto como tal
     private void Awake()
@@ -175,5 +183,51 @@ public class InventoryManager : MonoBehaviour
         uiInventory.MoveSelector(selectedIndex);
         uiInventory.ShowItem(items[selectedIndex]);
         uiInventory.ShowDescription(items[selectedIndex].description);
+    }
+
+    public void SaveInventory()
+    {
+        itemsToSave = new List<ObjectModular>(items);
+    }
+
+    public void LoadInventory()
+    {
+        items = new List<ObjectModular>(itemsToSave);
+        ResetWorld();
+        UpdateWorldItems();
+
+        uiInventory.Refresh(items);
+    }
+
+    // movida para checkear y spawnear objetos que no esten localizados en listas
+    // si uso itemsToSave para comparar lo puedon reventar todo
+    void UpdateWorldItems()
+    {
+        foreach (ItemSpawnPoint spawn in worldSpawns)
+        {
+            bool isCollected = false;
+
+            for (int i = 0; i < itemsToSave.Count; i++)
+            {
+                if (itemsToSave[i].itemID == spawn.item.itemID)
+                {
+                    isCollected = true;
+                    break;
+                }
+            }
+
+            if (isCollected)
+            {
+                spawn.Despawn();
+            }
+        }
+    }
+
+    void ResetWorld()
+    {
+        foreach (ItemSpawnPoint spawn in worldSpawns)
+        {
+            spawn.Spawn();
+        }
     }
 }

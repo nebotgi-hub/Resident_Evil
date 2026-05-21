@@ -31,6 +31,11 @@ public class UIIventory : MonoBehaviour
 
     public void Refresh(List<ObjectModular> items)
     {
+        itemImageBig.enabled = false;
+        itemNameText.text = "";
+        descriptionText.text = "";
+        selectionFrame.gameObject.SetActive(false);
+
         foreach (Transform child in contentPanel)
         {
             Destroy(child.gameObject);
@@ -106,9 +111,13 @@ public class UIIventory : MonoBehaviour
         itemImageBig.enabled = true;
 
         itemImageBig.sprite = item.Icon;
-
-        itemImageBig.sprite = item.Icon;
         itemNameText.text = item.objectName;
+
+        // enseñar use o discard si solo es consumible
+        bool showActions = item.isConsumable;
+
+        useImage.gameObject.SetActive(showActions);
+        discardImage.gameObject.SetActive(showActions);
     }
 
     // mover el selector

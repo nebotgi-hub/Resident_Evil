@@ -39,6 +39,7 @@ public class ItemPickup : MonoBehaviour
 
         // Debug.Log("Recogido: " + itemData.objectName);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        //Destroy(gameObject);
     }
 }
