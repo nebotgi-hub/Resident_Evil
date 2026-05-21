@@ -16,14 +16,13 @@ public abstract class Interactable : MonoBehaviour
             InRange = false;
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (Input.GetButtonDown("Interact") && InRange)
         {
-                OnInteract();
+            OnInteract();
         }
     }
 
-    // Cada objeto implementa esto
     protected abstract void OnInteract();
 }

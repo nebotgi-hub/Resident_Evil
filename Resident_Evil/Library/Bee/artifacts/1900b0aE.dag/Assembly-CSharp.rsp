@@ -371,6 +371,7 @@
 "Assets/Code/Andreu/UIIventory.cs"
 "Assets/Code/Carlos/DialogueManager.cs"
 "Assets/Code/Carlos/Interactable.cs"
+"Assets/Code/Carlos/Objects/Inter_Clock.cs"
 "Assets/Code/Carlos/Objects/Inter_Door.cs"
 "Assets/Code/Carlos/Objects/Inter_Pickup.cs"
 "Assets/Code/Carlos/Objects/Inter_Typewriter.cs"

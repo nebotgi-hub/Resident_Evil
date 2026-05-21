@@ -9,6 +9,7 @@ public class SoundManager : MonoBehaviour
 
     [Header("Audio Sources")]
     [SerializeField] private AudioSource sfxSource;
+    [SerializeField] private AudioSource sfxSource2;
     [SerializeField] private AudioSource musicSource;
 
     [Header("Sonidos registrados")]
@@ -31,15 +32,6 @@ public class SoundManager : MonoBehaviour
         foreach (var entry in sounds)
             if (!soundDict.ContainsKey(entry.name))
                 soundDict.Add(entry.name, entry.clip);
-    }
-
-    public void PlaySFX(string soundName)
-    {
-        if (TryGetClip(soundName, out var clip))
-        {
-            sfxSource.clip = clip;
-            sfxSource.Play();
-        }
     }
 
     public void PlayMusic(string soundName, bool loop = true)
@@ -92,10 +84,21 @@ public class SoundManager : MonoBehaviour
         if (stopOnEnd) source.Stop();
     }
 
-    public bool IsPlayingSFX(string soundName)
+    public void PlaySFX(string soundName, int sfxChannel = 1)
+    {
+        if (!TryGetClip(soundName, out var clip)) return;
+
+        AudioSource source = sfxChannel == 2 ? sfxSource2 : sfxSource;
+        source.clip = clip;
+        source.Play();
+    }
+
+
+    public bool IsPlayingSFX(string soundName, int sfxChannel = 1)
     {
         if (!TryGetClip(soundName, out var clip)) return false;
-        return sfxSource.isPlaying && sfxSource.clip == clip;
+        AudioSource source = sfxChannel == 2 ? sfxSource2 : sfxSource;
+        return source.isPlaying && source.clip == clip;
     }
 }
 
