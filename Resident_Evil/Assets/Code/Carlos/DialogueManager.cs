@@ -36,7 +36,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!dialogueActive) return;
 
-        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             if (isTyping)
                 SkipTyping();

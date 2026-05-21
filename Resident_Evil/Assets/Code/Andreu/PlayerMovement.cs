@@ -42,18 +42,36 @@ public class PlayerMovement : MonoBehaviour
 
         // Debug.Log(lifes);
 
-
-        if (isSprinting && !isMoonwalking)
+        if (isMoving)
         {
-            anim.SetInteger("state", 3);
+
+            if (isSprinting)
+            {
+                if (!SoundManager.Instance.IsPlayingSFX("Running"))
+                {
+                    SoundManager.Instance.PlaySFX("Running");
+                }
+
+                anim.SetInteger("state", 3);
+            }
+            else
+            {
+                if(!SoundManager.Instance.IsPlayingSFX("Walking"))
+                {
+                    SoundManager.Instance.PlaySFX("Walking");
+                }
+
+                anim.SetInteger("state", 1);
+            }
         }
         else if (isMoonwalking)
         {
+            if (!SoundManager.Instance.IsPlayingSFX("Walking"))
+            {
+                SoundManager.Instance.PlaySFX("Walking");
+            }
+
             anim.SetInteger("state", 2);
-        }
-        else if ((isMoving || horizontalSpeed != 0) && !isSprinting)
-        {
-            anim.SetInteger("state", 1);
         }
         else
         {
