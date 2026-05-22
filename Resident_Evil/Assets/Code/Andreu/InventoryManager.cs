@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     // instancia de la clase
     public static InventoryManager instance;
 
+    public GameObject inventory;
+
     // Array de objeto ObjectModular script
     public List<ObjectModular> items = new List<ObjectModular>();
 
@@ -50,33 +52,53 @@ public class InventoryManager : MonoBehaviour
     {
         if (items.Count == 0) return;
 
-        // movimiento
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (inventory.activeSelf)
         {
-            MoveRight();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            MoveLeft();
-        }
+            // movimiento
+            if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (!SoundManager.Instance.IsPlayingSFX("Move_menu",3)){
+                    SoundManager.Instance.PlaySFX("Move_menu", 3);
+                }
+          
+                MoveRight();
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (!SoundManager.Instance.IsPlayingSFX("Move_menu",3))
+                {
+                    SoundManager.Instance.PlaySFX("Move_menu", 3);
+                }
+                MoveLeft();
+            }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            actionIndex = 0;
-            // añadimos el indice de acción para decidir que hacer con el item
-            uiInventory.HighlightAction(actionIndex);
-        }
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                actionIndex = 0;
+                if (!SoundManager.Instance.IsPlayingSFX("Select",3))
+                {
+                    SoundManager.Instance.PlaySFX("Select", 3);
+                }
+                // añadimos el indice de acción para decidir que hacer con el item
+                uiInventory.HighlightAction(actionIndex);
+            }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            actionIndex = 1;
-            uiInventory.HighlightAction(actionIndex);
-        }
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                actionIndex = 0;
+                if (!SoundManager.Instance.IsPlayingSFX("Select", 3))
+                {
+                    SoundManager.Instance.PlaySFX("Select", 3);
+                }
+                actionIndex = 1;
+                uiInventory.HighlightAction(actionIndex);
+            }
 
-        // usabilidad de los items
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            ExecuteAction();
+            // usabilidad de los items
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                ExecuteAction();
+            }
         }
     }
 

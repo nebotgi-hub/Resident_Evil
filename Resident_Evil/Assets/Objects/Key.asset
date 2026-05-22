@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11dfcd0722a88624193998e099a86571, type: 3}
   m_Name: Key
   m_EditorClassIdentifier: 
-  objectName: Armor key
-  description: 'Key to use to open special door with an armor icon.
-
-'
+  objectName: Key
+  description: Key to use to open a door.
   Icon: {fileID: 21300000, guid: 907c2fd451d8c0f4aa8cdc58dfe38edd, type: 3}
   itemType: 0
   isConsumable: 0

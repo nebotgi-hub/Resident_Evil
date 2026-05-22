@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class UIIventory : MonoBehaviour
@@ -17,21 +18,25 @@ public class UIIventory : MonoBehaviour
     public List<RectTransform> slots;
 
     // seccion de la imagen grande y el nombre del item
-    public Image itemImageBig;
+    public GameObject states3;
+    public GameObject states2;
+    public GameObject states1;
+
+    public GameObject selected1;
+    public GameObject selected2;
+
+
     public TMP_Text itemNameText;
 
     // seccion de usar o descartar, los dos botones del inventario que dan utilidad
     public Image useImage;
     public Image discardImage;
 
-    public void Start()
-    {
-        itemImageBig.enabled = false;
-    }
+    public PlayerMovement player;
+
 
     public void Refresh(List<ObjectModular> items)
     {
-        itemImageBig.enabled = false;
         itemNameText.text = "";
         descriptionText.text = "";
         selectionFrame.gameObject.SetActive(false);
@@ -90,15 +95,44 @@ public class UIIventory : MonoBehaviour
     // de momento nada
     public void Update()
     {
-        
+        switch (player.lifes)
+        {
+            case 3:
+                states3.SetActive(true);
+                states2.SetActive(false);
+                states1.SetActive(false);
+                break;
+
+            case 2:
+                states3.SetActive(false);
+                states2.SetActive(true);
+                states1.SetActive(false);
+                break;
+
+            case 1:
+                states3.SetActive(false);
+                states2.SetActive(false);
+                states1.SetActive(true);
+                break;
+        }
     }
 
     public void HighlightAction(int index)
     {
         Debug.Log("HighlightAction llamado: " + index);
 
-        useImage.color = (index == 0) ? Color.red : Color.black;
-        discardImage.color = (index == 1) ? Color.red : Color.black;
+        GameObject inventoryUI = GameObject.Find("Use");
+
+        if (inventoryUI != null && inventoryUI.activeSelf)
+        {
+            selected1.SetActive(index == 0);
+            selected2.SetActive(index == 1);
+        }
+        else
+        {
+            selected1.SetActive(false);
+            selected2.SetActive(false);
+        }
     }
 
     public void ShowDescription(string desc)
@@ -108,9 +142,6 @@ public class UIIventory : MonoBehaviour
 
     public void ShowItem(ObjectModular item)
     {
-        itemImageBig.enabled = true;
-
-        itemImageBig.sprite = item.Icon;
         itemNameText.text = item.objectName;
 
         // enseñar use o discard si solo es consumible
@@ -118,6 +149,12 @@ public class UIIventory : MonoBehaviour
 
         useImage.gameObject.SetActive(showActions);
         discardImage.gameObject.SetActive(showActions);
+
+        if (!showActions)
+        {
+            selected1.gameObject.SetActive(false);
+            selected2.gameObject.SetActive(false);
+        }
     }
 
     // mover el selector

@@ -29,6 +29,7 @@ public class ItemPickup : MonoBehaviour
         if (canPick && Input.GetKeyDown(KeyCode.E))
         {
             PickItem();
+            SoundManager.Instance.PlaySFX("Pick", 3);
         }
     }
 
